@@ -4,14 +4,14 @@ class GeometricFiguresViewController: UIViewController {
     
     @IBOutlet weak var blueCyrcle: UIView! {
         didSet {
-            blueCyrcle.layer.cornerRadius = blueCyrcle.frame.size.height / 2
             blueCyrcle.backgroundColor = UIColor.blue
+            blueCyrcle.layer.cornerRadius = blueCyrcle.frame.size.height / 2
         }
     }
     @IBOutlet weak var redCyrcle: UIView! {
         didSet {
-            redCyrcle.layer.cornerRadius = redCyrcle.frame.size.height / 2
             redCyrcle.backgroundColor = UIColor.red
+            redCyrcle.layer.cornerRadius = redCyrcle.frame.size.height / 2
         }
     }
     
@@ -45,7 +45,6 @@ class GeometricFiguresViewController: UIViewController {
         if let color = notification.object as? UIColor {
             self.view.backgroundColor = color
         }
-        
     }
 
     // Creation of Tap gesture

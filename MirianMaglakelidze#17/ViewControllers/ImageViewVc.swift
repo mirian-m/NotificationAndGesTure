@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class ImageViewVc: UIViewController {
@@ -10,9 +8,9 @@ class ImageViewVc: UIViewController {
             image.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    var transporterViewIdentifaier: Int!
+    public var transporterViewIdentifaier: Int!
     
-    lazy var color = UIColor(red: CGFloat(Double.random(in: 0..<1)), green: CGFloat(Double.random(in: 0..<1)), blue: CGFloat(Double.random(in: 0..<1)), alpha: 1)
+    private lazy var color = UIColor(red: CGFloat(Double.random(in: 0..<1)), green: CGFloat(Double.random(in: 0..<1)), blue: CGFloat(Double.random(in: 0..<1)), alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +18,7 @@ class ImageViewVc: UIViewController {
     }
     
     // MARK:- Create LongPressGesture gesture
-    func creatLongPressGesture() -> UILongPressGestureRecognizer {
+    private func creatLongPressGesture() -> UILongPressGestureRecognizer {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(doSomthing))
         longPressGesture.minimumPressDuration = Double.random(in: 0...2)
         return longPressGesture
@@ -36,7 +34,7 @@ class ImageViewVc: UIViewController {
     }
     
     // MARK:- Create Swipe gesture
-    func createSwipeGesture() -> [UISwipeGestureRecognizer] {
+    private func createSwipeGesture() -> [UISwipeGestureRecognizer] {
         let rightSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(changeImageWidth))
         rightSwipeGesture.direction = .right
         
@@ -65,7 +63,7 @@ class ImageViewVc: UIViewController {
     }
     
     // MARK:- Creation of pinch gesture
-    func creatPinchGesture() -> UIPinchGestureRecognizer {
+    private func creatPinchGesture() -> UIPinchGestureRecognizer {
         UIPinchGestureRecognizer(target: self, action: #selector(scaleImage))
     }
     
@@ -78,16 +76,17 @@ class ImageViewVc: UIViewController {
         }
         
     }
-    func isImageViewBoundsOutOfTheView(_ imageView: UIImageView) -> Bool {
+    
+    private func isImageViewBoundsOutOfTheView(_ imageView: UIImageView) -> Bool {
         imageView.frame.size.width  > self.view.frame.size.width ||
             imageView.frame.size.height > self.view.frame.size.height
     }
     
-    func createNotification() {
+    private func createNotification() {
         NotificationCenter.default.post(name: Notification.Name("Mirian-maglakelidze.MirianMaglakelidze-17.changeBackground"), object: color, userInfo: nil)
     }
     // ADD ImageView Gesture
-    func chooseGesture() {
+    private func chooseGesture() {
         switch transporterViewIdentifaier {
         case 1, 2 :
             image.addGestureRecognizer(creatLongPressGesture())
